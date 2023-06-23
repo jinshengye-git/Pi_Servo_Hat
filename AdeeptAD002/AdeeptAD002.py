@@ -7,6 +7,8 @@ class AdeeptAD002_Driver():
         self.degree_180_val = 480
         self.degree_0_val = 100
         self.enable_chip(self._bus, self._addr)
+        time.sleep(0.5)
+        self.move_to(0, 0)
 
     def enable_chip(self,bus=None, addr=None):
         if bus is not None and addr is not None:
