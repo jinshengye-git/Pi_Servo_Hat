@@ -17,8 +17,11 @@ class AdeeptAD002_Driver():
             time.sleep(.25) # delay for reset
             bus.write_byte_data(addr, 0xfe, 0x79) #changes the Prescale register value for 50 Hz, using the equation in the datasheet.
             bus.write_byte_data(addr, 0, 0x20) # enables the chip
+    
+    def move_to(self, channel, position):
+        self.__set_servo(self._bus, self._addr,channel=channel,position=position)
 
-    def set_servo(self, bus, addr, channel, position):
+    def __set_servo(self, bus, addr, channel, position):
         if bus is not None and addr is not None:
             #print("channel: " + str (channel) + "\t" + "position: " + str (position))
             #shift address to correct channel start and stop addresses
